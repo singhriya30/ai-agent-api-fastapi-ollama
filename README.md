@@ -71,7 +71,7 @@ pip install -r requirements.txt
 Create a `.env` file:
 
 ```
-API_KEY=RadhaRani12
+API_KEY= your_api_key
 ```
 
 ---
