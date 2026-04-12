@@ -12,7 +12,7 @@ headers = {
 }
 
 data = {
-    "prompt": "Explain AI in simple terms"
+    "prompt": "Latest news about AI"
 }
 
 response = requests.post(url, headers=headers, json=data)
