@@ -1,39 +1,47 @@
-# 🤖 AI Agent API with Memory & Authentication
+# 🤖 AI Agent API with Memory & Authentication (FastAPI + Ollama)
 
-A production-style AI backend built using FastAPI and Ollama that supports multi-turn conversations, API key authentication, and credit-based usage control.
+A production-style AI backend built using FastAPI and Ollama that supports multi-turn conversations, API key authentication, and credit-based usage control. This project demonstrates how to build a custom AI agent system without relying on external LLM frameworks.
 
 ---
 
 ## 🚀 Features
 
-* 🔹 LLM-powered AI responses using Mistral (via Ollama)
-* 🔹 Context-aware conversations (memory support)
-* 🔹 API key-based authentication
-* 🔹 Credit-based request limiting system
-* 🔹 FastAPI backend (high performance)
-* 🔹 JSON-based API responses
-* 🔹 Scalable and modular design
+* 🧠 LLM-powered AI responses using Mistral (via Ollama)
+* 💬 Context-aware conversations (session-based memory)
+* 🔐 API key-based authentication system
+* 🎯 Credit-based request limiting system
+* ⚡ High-performance FastAPI backend
+* 📦 JSON-based API responses
+* 🏗️ Clean and modular backend architecture
 
 ---
 
 ## 🧠 Tech Stack
 
 * **Backend:** FastAPI (Python)
-* **LLM:** Ollama (Mistral model)
+* **LLM Runtime:** Ollama (Mistral model)
 * **Environment Management:** python-dotenv
-* **API Testing:** Requests / Postman
+* **API Testing:** Postman / Requests
+
+---
+
+## 🏗️ Architecture
+
+```id="s8n21z"
+User → FastAPI → Custom AI Agent → Ollama → Response
+```
 
 ---
 
 ## 📁 Project Structure
 
-```
-API-For-Your-LLM/
-│── main.py              # FastAPI backend with AI agent
-│── test-api.py          # Script to test API
-│── requirements.txt     # Dependencies
-│── .env                 # API key configuration
-│── README.md            # Project documentation
+```id="y0jtxd"
+ai-agent-api/
+│── main.py            # FastAPI backend with AI agent logic
+│── testapi.py         # API testing script
+│── requirements.txt
+│── .env               # API key configuration
+│── README.md
 ```
 
 ---
@@ -42,8 +50,8 @@ API-For-Your-LLM/
 
 ### 1️⃣ Clone Repository
 
-```bash
-git clone https://github.com/singhriya30/ai-agent-api.git
+```bash id="3g3n2k"
+git clone https://github.com/your-username/your-repo-name.git
 cd ai-agent-api
 ```
 
@@ -51,7 +59,7 @@ cd ai-agent-api
 
 ### 2️⃣ Create Virtual Environment
 
-```bash
+```bash id="8dntvd"
 python -m venv venv
 venv\Scripts\activate
 ```
@@ -60,7 +68,7 @@ venv\Scripts\activate
 
 ### 3️⃣ Install Dependencies
 
-```bash
+```bash id="qgq4n6"
 pip install -r requirements.txt
 ```
 
@@ -68,21 +76,21 @@ pip install -r requirements.txt
 
 ### 4️⃣ Setup Environment Variables
 
-Create a `.env` file:
+Create a `.env` file in the root directory:
 
-```
-API_KEY= your_api_key
+```id="o8u7yx"
+API_KEY=your_api_key
 ```
 
 ---
 
 ### 5️⃣ Install & Run Ollama
 
-Download from: https://ollama.com
+Download and install from: https://ollama.com
 
-Then run:
+Run the model:
 
-```bash
+```bash id="r8rx1c"
 ollama run mistral
 ```
 
@@ -90,7 +98,7 @@ ollama run mistral
 
 ### 6️⃣ Run FastAPI Server
 
-```bash
+```bash id="0x9p7r"
 uvicorn main:app --reload
 ```
 
@@ -100,20 +108,24 @@ uvicorn main:app --reload
 
 ### Endpoint
 
-```
+```id="q6w7jv"
 POST /ai-agent
 ```
 
+---
+
 ### Headers
 
-```
+```id="qf6a6j"
 x-api-key: your_api_key
 Content-Type: application/json
 ```
 
+---
+
 ### Request Body
 
-```json
+```json id="y9y6kx"
 {
   "prompt": "Explain AI in simple terms"
 }
@@ -123,10 +135,10 @@ Content-Type: application/json
 
 ### Response Example
 
-```json
+```json id="e2z6mn"
 {
   "status": "success",
-  "response": "AI is a technology that allows machines to think and learn like humans.",
+  "response": "AI is a technology that enables machines to learn and make decisions like humans.",
   "conversation_length": 3,
   "credits_left": 4
 }
@@ -145,14 +157,22 @@ Content-Type: application/json
 ## 🧠 Memory Feature
 
 * Stores conversation per API key
-* Enables multi-turn context-aware responses
-* Improves AI interaction quality
+* Enables multi-turn conversations
+* Improves response quality with context
 
 ---
 
-## 📌 Future Improvements
+## ⚠️ Limitations
 
-* 🔹 Database integration for persistent memory
-* 🔹 Multiple user authentication system
-* 🔹 Frontend UI (React / Next.js)
-* 🔹 Deployment on cloud (AWS / Render)
+* Requires local setup of Ollama
+* Not directly deployable to cloud without modification
+
+---
+
+## 📈 Future Improvements
+
+* Add database for persistent memory
+* Multi-user authentication system
+* Admin dashboard for API usage tracking
+* Cloud deployment support
+* Integration with external tools (search, APIs)
